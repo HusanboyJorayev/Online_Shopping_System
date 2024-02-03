@@ -41,8 +41,9 @@ public class CategoryServiceImpl implements CategoryService<Integer, CategoryDto
     public ApiResponse<CategoryDto> get(Integer id) {
         return this.categoryRepository.findByIdAndDeletedAtIsNull(id)
                 .map(category -> ApiResponse.<CategoryDto>builder()
-                        .code(-1)
-                        .message("category is not found")
+                        .success(true)
+                        .message("ok")
+                        .data(this.categoryMapper.toDto(category))
                         .build())
                 .orElse(ApiResponse.<CategoryDto>builder()
                         .code(-1)

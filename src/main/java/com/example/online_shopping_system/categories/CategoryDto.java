@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CategoryDto {
-    private Long id;
+    private Integer id;
     @NotBlank(message = "name cannot be nul or empty")
     private String name;
     @NotBlank(message = "name cannot be nul or empty")

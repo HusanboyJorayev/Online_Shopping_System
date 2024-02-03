@@ -13,5 +13,6 @@ public interface CategoryService<K, V> {
     ApiResponse<V> update(V dto, K id);
 
     ApiResponse<V> delete(K id);
+
     ApiResponse<List<V>> getAll();
 }
