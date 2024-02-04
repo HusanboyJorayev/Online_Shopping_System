@@ -9,6 +9,7 @@ public interface CategoryService<K, V> {
     ApiResponse<V> create(V dto);
 
     ApiResponse<V> get(K id);
+    ApiResponse<V> getWithProducts(K id);
 
     ApiResponse<V> update(V dto, K id);
 

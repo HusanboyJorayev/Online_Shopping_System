@@ -1,10 +1,19 @@
 package com.example.online_shopping_system.customers;
 
+import com.example.online_shopping_system.categories.Category;
+import com.example.online_shopping_system.categories.CategoryDto;
+import com.example.online_shopping_system.deliveries.Deliveries;
+import com.example.online_shopping_system.deliveries.DeliveriesDto;
+import com.example.online_shopping_system.products.ProductDto;
+import com.example.online_shopping_system.products.Products;
+import com.example.online_shopping_system.shoppingOrder.Order;
+import com.example.online_shopping_system.shoppingOrder.OrderDto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,6 +27,12 @@ public class CustomersDto {
     private String name;
     private boolean contactAdd;
     private String address;
+
+    private List<DeliveriesDto> deliveries;
+    private List<OrderDto> orders;
+    private List<ProductDto> products;
+    private List<CategoryDto> categories;
+
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

@@ -26,6 +26,12 @@ public class CategoryController implements CategoryService<Integer, CategoryDto>
     }
 
     @Override
+    @GetMapping("/getWithProduct")
+    public ApiResponse<CategoryDto> getWithProducts(@RequestParam(value = "id") Integer id) {
+        return this.categoryService.getWithProducts(id);
+    }
+
+    @Override
     @PutMapping("/update")
     public ApiResponse<CategoryDto> update(@RequestBody @Valid CategoryDto dto, @RequestParam(value = "id") Integer id) {
         return this.categoryService.update(dto, id);

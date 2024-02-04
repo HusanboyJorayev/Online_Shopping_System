@@ -39,10 +39,80 @@ public class CustomersServiceImpl implements CustomersService<Integer, Customers
     @Override
     public ApiResponse<CustomersDto> get(Integer id) {
         return this.customersRepository.findByIdAndDeletedAtIsNull(id)
-                .map(category -> ApiResponse.<CustomersDto>builder()
+                .map(customers -> ApiResponse.<CustomersDto>builder()
                         .success(true)
                         .message("ok")
-                        .data(this.customerMapper.toDto(category))
+                        .data(this.customerMapper.toDto(customers))
+                        .build())
+                .orElse(ApiResponse.<CustomersDto>builder()
+                        .code(-1)
+                        .message("category is not found")
+                        .build());
+    }
+
+    @Override
+    public ApiResponse<CustomersDto> getWithAllTables(Integer id) {
+        return this.customersRepository.findByIdAndDeletedAtIsNull(id)
+                .map(customers -> ApiResponse.<CustomersDto>builder()
+                        .success(true)
+                        .message("ok")
+                        .data(this.customerMapper.toDtoWithAllTables(customers))
+                        .build())
+                .orElse(ApiResponse.<CustomersDto>builder()
+                        .code(-1)
+                        .message("category is not found")
+                        .build());
+    }
+
+    @Override
+    public ApiResponse<CustomersDto> getWithDeliveries(Integer id) {
+        return this.customersRepository.findByIdAndDeletedAtIsNull(id)
+                .map(customers -> ApiResponse.<CustomersDto>builder()
+                        .success(true)
+                        .message("ok")
+                        .data(this.customerMapper.toDtoWithDeliveries(customers))
+                        .build())
+                .orElse(ApiResponse.<CustomersDto>builder()
+                        .code(-1)
+                        .message("category is not found")
+                        .build());
+    }
+
+    @Override
+    public ApiResponse<CustomersDto> getWithCategories(Integer id) {
+        return this.customersRepository.findByIdAndDeletedAtIsNull(id)
+                .map(customers -> ApiResponse.<CustomersDto>builder()
+                        .success(true)
+                        .message("ok")
+                        .data(this.customerMapper.toDtoWithCategories(customers))
+                        .build())
+                .orElse(ApiResponse.<CustomersDto>builder()
+                        .code(-1)
+                        .message("category is not found")
+                        .build());
+    }
+
+    @Override
+    public ApiResponse<CustomersDto> getWithProducts(Integer id) {
+        return this.customersRepository.findByIdAndDeletedAtIsNull(id)
+                .map(customers -> ApiResponse.<CustomersDto>builder()
+                        .success(true)
+                        .message("ok")
+                        .data(this.customerMapper.toDtoWithProduct(customers))
+                        .build())
+                .orElse(ApiResponse.<CustomersDto>builder()
+                        .code(-1)
+                        .message("category is not found")
+                        .build());
+    }
+
+    @Override
+    public ApiResponse<CustomersDto> getWithOrders(Integer id) {
+        return this.customersRepository.findByIdAndDeletedAtIsNull(id)
+                .map(customers -> ApiResponse.<CustomersDto>builder()
+                        .success(true)
+                        .message("ok")
+                        .data(this.customerMapper.toDtoWithOrder(customers))
                         .build())
                 .orElse(ApiResponse.<CustomersDto>builder()
                         .code(-1)

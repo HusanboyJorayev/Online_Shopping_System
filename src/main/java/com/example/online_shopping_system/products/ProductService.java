@@ -10,6 +10,7 @@ public interface ProductService<Integer,ProductDto> {
     ApiResponse<ProductDto> create(ProductDto dto);
 
     ApiResponse<ProductDto> get(Integer id);
+    ApiResponse<ProductDto> getWithSeller(Integer id);
 
     ApiResponse<ProductDto> update(ProductDto dto, Integer id);
 

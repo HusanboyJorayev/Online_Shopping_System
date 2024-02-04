@@ -12,6 +12,16 @@ public interface CustomersService<Integer, CustomersDto> {
 
     ApiResponse<CustomersDto> get(Integer id);
 
+    ApiResponse<CustomersDto> getWithAllTables(Integer id);
+
+    ApiResponse<CustomersDto> getWithDeliveries(Integer id);
+
+    ApiResponse<CustomersDto> getWithCategories(Integer id);
+
+    ApiResponse<CustomersDto> getWithProducts(Integer id);
+
+    ApiResponse<CustomersDto> getWithOrders(Integer id);
+
     ApiResponse<CustomersDto> update(CustomersDto dto, Integer id);
 
     ApiResponse<CustomersDto> delete(Integer id);

@@ -53,6 +53,20 @@ public class CategoryServiceImpl implements CategoryService<Integer, CategoryDto
     }
 
     @Override
+    public ApiResponse<CategoryDto> getWithProducts(Integer id) {
+        return this.categoryRepository.findByIdAndDeletedAtIsNull(id)
+                .map(category -> ApiResponse.<CategoryDto>builder()
+                        .success(true)
+                        .message("ok")
+                        .data(this.categoryMapper.toDtoWithProducts(category))
+                        .build())
+                .orElse(ApiResponse.<CategoryDto>builder()
+                        .code(-1)
+                        .message("category is not found")
+                        .build());
+    }
+
+    @Override
     public ApiResponse<CategoryDto> update(CategoryDto dto, Integer id) {
         List<ErrorDto> errors = this.categoryValidation.validation(dto);
         if (!errors.isEmpty()) {

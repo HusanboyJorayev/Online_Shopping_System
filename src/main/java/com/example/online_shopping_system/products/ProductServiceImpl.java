@@ -53,6 +53,20 @@ public class ProductServiceImpl implements ProductService<Integer, ProductDto> {
     }
 
     @Override
+    public ApiResponse<ProductDto> getWithSeller(Integer id) {
+        return this.productRepository.findByIdAndDeletedAtIsNull(id)
+                .map(products -> ApiResponse.<ProductDto>builder()
+                        .success(true)
+                        .message("ok")
+                        .data(this.productsMapper.toDtoWithSeller(products))
+                        .build())
+                .orElse(ApiResponse.<ProductDto>builder()
+                        .code(-1)
+                        .message("category is not found")
+                        .build());
+    }
+
+    @Override
     public ApiResponse<ProductDto> update(ProductDto dto, Integer id) {
         List<ErrorDto> errors = this.productValidation.validation(dto);
         if (!errors.isEmpty()) {

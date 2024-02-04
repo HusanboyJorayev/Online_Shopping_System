@@ -28,6 +28,12 @@ public class ProductController implements ProductService<Integer, ProductDto> {
     }
 
     @Override
+    @GetMapping("/getWithSeller")
+    public ApiResponse<ProductDto> getWithSeller(@RequestParam(value = "id") Integer id) {
+        return this.productServiceImpl.getWithSeller(id);
+    }
+
+    @Override
     @PutMapping("/update")
     public ApiResponse<ProductDto> update(@RequestBody @Valid ProductDto dto, @RequestParam(value = "id") Integer id) {
         return this.productServiceImpl.update(dto, id);

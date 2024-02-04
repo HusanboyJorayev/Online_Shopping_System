@@ -26,6 +26,36 @@ public class CustomersController implements CustomersService<Integer, CustomersD
     }
 
     @Override
+    @GetMapping("/getWithAllTables")
+    public ApiResponse<CustomersDto> getWithAllTables(@RequestParam(value = "id") Integer id) {
+        return this.customersServiceImpl.getWithAllTables(id);
+    }
+
+    @Override
+    @GetMapping("/getWithDeliveries")
+    public ApiResponse<CustomersDto> getWithDeliveries(@RequestParam(value = "id") Integer id) {
+        return this.customersServiceImpl.getWithDeliveries(id);
+    }
+
+    @Override
+    @GetMapping("/getWithCategories")
+    public ApiResponse<CustomersDto> getWithCategories(@RequestParam(value = "id") Integer id) {
+        return this.customersServiceImpl.getWithCategories(id);
+    }
+
+    @Override
+    @GetMapping("/getWithProducts")
+    public ApiResponse<CustomersDto> getWithProducts(@RequestParam(value = "id") Integer id) {
+        return this.customersServiceImpl.getWithProducts(id);
+    }
+
+    @Override
+    @GetMapping("/getWithOrders")
+    public ApiResponse<CustomersDto> getWithOrders(@RequestParam(value = "id") Integer id) {
+        return this.customersServiceImpl.getWithOrders(id);
+    }
+
+    @Override
     @PutMapping("/update")
     public ApiResponse<CustomersDto> update(@RequestBody @Valid CustomersDto dto, @RequestParam(value = "id") Integer id) {
         return this.customersServiceImpl.update(dto, id);
