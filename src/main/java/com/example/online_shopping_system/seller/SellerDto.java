@@ -1,6 +1,5 @@
-package com.example.online_shopping_system.products;
+package com.example.online_shopping_system.seller;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -12,13 +11,11 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class ProductDto {
+public class SellerDto {
     private Integer id;
-    private Integer customerId;
-    @NotNull(message = "categoryId cannot be null")
-    private Integer categoryId;
-    @NotBlank(message = "name cannot be null or mepty")
+    @NotNull(message = "productId cannot be null")
+    private Integer productId;
+    @NotBlank(message = "name cannot be null or empty")
     private String name;
 
     private LocalDateTime createdAt;

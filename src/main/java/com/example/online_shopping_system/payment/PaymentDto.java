@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class PaymentDto {
     private Integer id;
     @NotNull(message = "categoryId cannot be null")
-    private Integer categoryId;
+    private Integer customerId;
     @NotBlank(message = "date cannot be null or empty")
     private String date;
 

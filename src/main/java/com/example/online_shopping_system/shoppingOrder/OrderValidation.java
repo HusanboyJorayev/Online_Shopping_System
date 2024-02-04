@@ -1,4 +1,4 @@
-package com.example.online_shopping_system.payment;
+package com.example.online_shopping_system.shoppingOrder;
 
 import com.example.online_shopping_system.response.ErrorDto;
 import io.micrometer.common.util.StringUtils;
@@ -8,14 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class PaymentValidation {
-    public List<ErrorDto> validation(PaymentDto dto) {
+public class OrderValidation {
+    public List<ErrorDto> validation(OrderDto dto) {
         List<ErrorDto> errors = new ArrayList<>();
-        if (StringUtils.isBlank(dto.getDate())) {
-            errors.add(new ErrorDto("date cannot be null or empty", "date"));
+        if (StringUtils.isBlank(dto.getName())) {
+            errors.add(new ErrorDto("name cannot be null or empty", "name"));
         }
         if (dto.getCustomerId() == null) {
-            errors.add(new ErrorDto("categoryId cannot be null", "categoryId"));
+            errors.add(new ErrorDto("customerId cannot be null", "productId"));
         }
         return errors;
     }

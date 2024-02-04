@@ -1,4 +1,4 @@
-package com.example.online_shopping_system.products;
+package com.example.online_shopping_system.seller;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -11,13 +11,12 @@ import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "products")
-public class Products {
+@Table(name = "seller")
+public class Seller {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer categoryId;
-    private Integer customerId;
+    private Integer productId;
     private String name;
 
     private LocalDateTime createdAt;

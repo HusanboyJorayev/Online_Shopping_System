@@ -16,7 +16,7 @@ public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer categoryId;
+    private Integer customerId;
     private String date;
 
     private LocalDateTime createdAt;
