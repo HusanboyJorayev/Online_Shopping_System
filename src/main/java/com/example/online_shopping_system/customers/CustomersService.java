@@ -27,4 +27,6 @@ public interface CustomersService<Integer, CustomersDto> {
     ApiResponse<CustomersDto> delete(Integer id);
 
     ApiResponse<List<CustomersDto>> getAll();
+
+    ApiResponse<List<CustomersDto>> getAllCustomers(Integer id);
 }

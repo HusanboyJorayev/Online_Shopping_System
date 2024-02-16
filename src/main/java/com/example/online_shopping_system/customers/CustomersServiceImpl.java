@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -179,6 +180,22 @@ public class CustomersServiceImpl implements CustomersService<Integer, Customers
                 .success(true)
                 .message("Ok")
                 .data(categories.stream().map(this.customerMapper::toDto).toList())
+                .build();
+    }
+
+    @Override
+    public ApiResponse<List<CustomersDto>> getAllCustomers(Integer id) {
+        List<Customers> customers = this.customersRepository.findAllByDeletedAtIsNull();
+        List<Customers> customersList = new ArrayList<>();
+        for (Customers customer : customers) {
+            if (customer.getId().equals(id)) {
+                customersList.add(customer);
+            }
+        }
+        return ApiResponse.<List<CustomersDto>>builder()
+                .success(true)
+                .message("Ok")
+                .data(customersList.stream().map(this.customerMapper::toDto).toList())
                 .build();
     }
 }

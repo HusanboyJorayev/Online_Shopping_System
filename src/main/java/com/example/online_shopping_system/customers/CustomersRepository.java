@@ -16,4 +16,6 @@ public interface CustomersRepository extends JpaRepository<Customers, Integer> {
             select  c from Customers as c
             """)
     List<Customers> getAll();
+
+    List<Customers>findAllByDeletedAtIsNull();
 }

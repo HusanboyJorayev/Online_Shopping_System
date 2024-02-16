@@ -68,8 +68,14 @@ public class CustomersController implements CustomersService<Integer, CustomersD
     }
 
     @Override
-    @GetMapping("getAll")
+    @GetMapping("/getAll")
     public ApiResponse<List<CustomersDto>> getAll() {
         return this.customersServiceImpl.getAll();
+    }
+
+    @Override
+    @GetMapping("/getAllCustomersById")
+    public ApiResponse<List<CustomersDto>> getAllCustomers(Integer id) {
+        return null;
     }
 }
